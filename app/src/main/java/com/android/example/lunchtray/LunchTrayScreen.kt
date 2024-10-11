@@ -21,7 +21,9 @@ import com.android.example.lunchtray.data.DataSource
 import com.android.example.lunchtray.model.OrderViewModel
 import com.android.example.lunchtray.ui.screens.AccompanimentMenu
 import com.android.example.lunchtray.ui.screens.Checkout
+import com.android.example.lunchtray.ui.screens.EntreeMenu
 import com.android.example.lunchtray.ui.screens.SideDishMenu
+import com.android.example.lunchtray.ui.screens.StartOrder
 
 enum class LunchTrayScreen(@StringRes val title: Int) {
     Start( title = R.string.app_name),
@@ -65,7 +67,7 @@ fun LunchTrayApp() {
             startDestination = LunchTrayScreen.Start.name,
         ) {
             composable(route = LunchTrayScreen.Start.name) {
-                StartOrderScreen(
+                StartOrder(
                     onStartOrderButtonClicked = {
                         navController.navigate(LunchTrayScreen.Entree.name)
                     },
@@ -76,7 +78,7 @@ fun LunchTrayApp() {
             }
 
             composable(route = LunchTrayScreen.Entree.name) {
-                EntreeMenuScreen(
+                EntreeMenu(
                     options = DataSource.entreeMenuItems,
                     onCancelButtonClicked = {
                         viewModel.resetOrder()
