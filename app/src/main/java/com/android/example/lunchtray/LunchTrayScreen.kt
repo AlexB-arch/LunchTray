@@ -7,6 +7,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -17,6 +18,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.android.example.lunchtray.components.LunchTrayAppBar
 import com.android.example.lunchtray.data.DataSource
+import com.android.example.lunchtray.model.OrderViewModel
+import com.android.example.lunchtray.ui.screens.AccompanimentMenu
+import com.android.example.lunchtray.ui.screens.Checkout
 
 enum class LunchTrayScreen(@StringRes val title: Int) {
     Start( title = R.string.app_name),
@@ -90,14 +94,14 @@ fun LunchTrayApp() {
             }
 
             composable(route = LunchTrayScreen.Sides.name) {
-                SideDishMenuScreen(
-                    options = DataSource.sideDishMenuItems,
+                SideDishMenu(
+                    options = DataSource.sideMenuItems,
                     onCancelButtonClicked = {
                         viewModel.resetOrder()
                         navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
                     },
                     onNextButtonClicked = {
-                        navController.navigate(LunchTrayScreen.Accompaniment.name)
+                        navController.navigate(LunchTrayScreen.Sides.name)
                     },
                     onSelectionChanged = { item ->
                         viewModel.updateSideDish(item)
@@ -108,8 +112,8 @@ fun LunchTrayApp() {
                 )
             }
 
-            composable(route = LunchTrayScreen.Accompaniment.name) {
-                AccompanimentMenuScreen(
+            composable(route = LunchTrayScreen.Accompaniments.name) {
+                AccompanimentMenu(
                     options = DataSource.accompanimentMenuItems,
                     onCancelButtonClicked = {
                         viewModel.resetOrder()
@@ -128,7 +132,7 @@ fun LunchTrayApp() {
             }
 
             composable(route = LunchTrayScreen.Checkout.name) {
-                CheckoutScreen(
+                Checkout(
                     orderUiState = uiState,
                     onCancelButtonClicked = {
                         viewModel.resetOrder()

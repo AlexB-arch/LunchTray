@@ -7,4 +7,9 @@
     <string name="back_button">Back</string>
     <string name="cancel">Cancel</string>
     <string name="next">Next</string>
+    <string name="subtotal">Subtotal: %1$$d</string>
+    <string name="tax">Tax</string>
+    <string name="order_summary">Order Summary:</string>
+    <string name="total">Total:</string>
+    <string name="submit">Submit</string>
 </resources>
