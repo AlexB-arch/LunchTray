@@ -21,6 +21,7 @@ import com.android.example.lunchtray.data.DataSource
 import com.android.example.lunchtray.model.OrderViewModel
 import com.android.example.lunchtray.ui.screens.AccompanimentMenu
 import com.android.example.lunchtray.ui.screens.Checkout
+import com.android.example.lunchtray.ui.screens.SideDishMenu
 
 enum class LunchTrayScreen(@StringRes val title: Int) {
     Start( title = R.string.app_name),
