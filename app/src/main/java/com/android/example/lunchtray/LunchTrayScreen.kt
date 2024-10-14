@@ -104,7 +104,7 @@ fun LunchTrayApp() {
                         navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
                     },
                     onNextButtonClicked = {
-                        navController.navigate(LunchTrayScreen.Sides.name)
+                        navController.navigate(LunchTrayScreen.Accompaniments.name)
                     },
                     onSelectionChanged = { item ->
                         viewModel.updateSideDish(item)

@@ -52,10 +52,7 @@ fun BaseMenu(
         MenuScreenButtonGroup(
             selectedItemName = selectedItemName,
             onCancelButtonClicked = onCancelButtonClicked,
-            onNextButtonClicked = {
-                // Assert not null bc next button is not enabled unless selectedItem is not null.
-                onNextButtonClicked()
-            },
+            onNextButtonClicked = { onNextButtonClicked() },
             modifier = Modifier.fillMaxWidth().padding(padding_medium)
         )
     }
